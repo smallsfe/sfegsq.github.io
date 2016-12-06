@@ -34,7 +34,7 @@ tags:
 ### 不修改状态
 上一点已经提到，函数式编程只是返回新的值，不修改系统变量。因此，不修改变量，也是它的一个重要特点。在其他类型的语言中，变量往往用来保存"状态"（state）。不修改变量，意味着状态不能保存在变量中。
 函数式编程使用参数保存状态，最好的例子就是递归。下面的代码是一个将字符串逆序排列的函数，它演示了不同的参数如何决定了运算所处的"状态"。
-```
+```Javascript
 function reverse(string) {
 　　　　if(string.length == 0) {
 　　　　　　return string;
@@ -46,7 +46,7 @@ function reverse(string) {
 ### 函数是一等公民
 “一等”这个术语通常用来描述值。当函数被看作“一等公民”时，那它就可以去任何值可以去的地方，很少有限制。比如数字在Javascript里就是一等公民，同程
 作为一等公民的函数就会拥有类似数字的性质。
-```
+```Javascript
 var fortytwo = function(){return 42} // 函数与数字一样可以存储为变量
 var fortytwo = [32, function(){return 42}] // 函数与数字一样可以存储为数组的一个元素
 var fortytwo = {number: 32, fun: function(){return 42}} // 函数与数字一样可以作为对象的成员变量
@@ -65,7 +65,7 @@ return function(){return 42}
 Applicative编程是特殊函数式编程的一种形式。Applicative编程的三个典型例子是`map,reduce,filter`
 > 函数A作为参数提供给函数B。 (即定义一个函数，让它接收一个函数，然后调用它)
 
-```
+```Javascript
 _.find(["a","b",3,"d"], _.isNumber) // _.find与_.isNumber都是Underscore中的方法
 
 // 自行实现一个Applicative函数
@@ -86,7 +86,7 @@ exam(function(e){
 
 ### 以其他函数为参数的函数
 #### 关于传递函数的思考： max，finder，best
-```
+```Javascript
 // max是一个高阶函数
 var people = [{name: "Fred", age: 65}, {name: "Lucy", age: 36}];
 _.max(people, function(p) { return p.age }); 
@@ -95,7 +95,7 @@ _.max(people, function(p) { return p.age });
 但是，在某些方面这个函数是受限的，并不是真正的函数式。具体来说，对于`_.max`而言,比较总是需要通过大于运算符（>）来完成。
 
 不过，我们可以创建一个新的函数finder。它接收两个函数：一个用来生成可比较的值，而另一个用来比较两个值并返回当中的”最佳“值。
-```
+```Javascript
 function finder(valueFun, bestFun, coll) {
   return _.reduce(coll, function(best, current) {
     var bestValue = valueFun(best);
@@ -106,7 +106,7 @@ function finder(valueFun, bestFun, coll) {
 }
 ```
 在任何情况下，我们现在都可以用`finder`来找到不同类型的”最佳“值：
-```
+```Javascript
 finder(function(e){return e.age}, Math.max, people) 
 // => {name: ”Fred", age: 65}
 
@@ -116,7 +116,7 @@ finder(function(e){return e.name}, function(x, y){
 ``` 
 **缩减一点**
 函数`finder`短小精悍，并且能按照我们预期来工作，但为了满足最大程度的灵活性，它重复了一些逻辑。
-```
+```Javascript
 //  在 finder函数中
 return (bestValue === bestFun(bestValue, currentValue)) ? best : current;
 // 在输入的函数参数中
@@ -127,7 +127,7 @@ return (x.charAt((0) === "L") ? x : y
 - 比较最佳值的函数知道如何“分解”它的参数
 
 在以上假设的基础下，我们可以实现一个更简洁的best函数。
-```
+```Javascript
 function best(fun, coll) {
   return _.reduce(coll, function(x, y) {
     return fun(x, y) ? x : y;
@@ -139,7 +139,7 @@ best(function(x,y) { return x > y }, [1,2,3,4,5]);
 ```
 #### 关于传递函数的更多思考：重复，反复和条件迭代
 首先，从一个简单的函数`repeat`开始。它以一个数字和一个值为参数，将该值进行多次复制，并放入一个数组中：
-```
+```Javascript
 function repeat(times, VALUE) {
   return _.map(_.range(times), function() { return VALUE; });
 }
@@ -149,7 +149,7 @@ repeat(4, "Major");
 ```
 **使用函数，而不是值**
 通过将参数从值替换为函数，打开了一个充满可能性的世界。
-```
+```Javascript
 function repeatedly(times, fun) {
   return _.map(_.range(times), fun);
 }
@@ -162,7 +162,7 @@ repeatedly(3, function() {
 **再次强调，“使用函数，而不是值”**
 我们常常会知道函数应该被调用多少次，但有时候也知道什么时候推出并不取决于“次数”，而是条件！因此我可以定义另一个名为`iterateUntil`的函数。
 `iterateUntil`接收2个参数，一个用来执行一些动作，另一个用来进行结果检查。
-```
+```Javascript
 function iterateUntil(fun, check, init) {
   var ret = [];
   var result = fun(init);
@@ -177,7 +177,7 @@ function iterateUntil(fun, check, init) {
 ```
 
 ### 返回其他函数的函数
-```
+```Javascript
 function invoker (NAME, METHOD) { // 接收一个方法，并在任何给定的对象上调用它
   return function(target /* args ... */) {
     if (!existy(target)) fail("Must provide a target");
@@ -198,7 +198,7 @@ _.map([[1,2,3]], rev);
 ```
 **高阶函数捕获参数**
 高阶函数的参数是用来“配置”返回函数的行为的。对于`makeAdder`而言，它的参数配置了其返回函数每次添加数值的大小
-```
+```Javascript
 function makeAdder(CAPTURED) {
   return function(free) {
     return free + CAPTURED;
@@ -211,7 +211,7 @@ add10(32);
 ```
 **捕获变量的好处**
 用闭包来捕获增加值，并用作后缀。（但这样并不具有引用透明）
-```
+```Javascript
 function makeUniqueStringFunction(start) {
   var COUNTER = start;
 
@@ -230,7 +230,7 @@ uniqueString("dari");
 ## 由函数构建函数
 ### 函数式组合的精华
 > 精华：使用现有的零部件来建立新的行为，这些新行为同样也成为了已有的零部件。
-```
+```Javascript
 // 接收一个或多个函数，然后不断尝试依次调用这些函数的方法，直到返回一个非`undefined`的值
 function dispatch(/* funs */) {
   var funs = _.toArray(arguments);
@@ -270,7 +270,7 @@ str(_.range(10));
     - 做特定个参数的任务（如适用）
 
 同样的模式也体现在`Underscore`的函数`_.map()`的实现中：
-```
+```Javascript
   _.map = _.collect = function(obj, iteratee, context) {
     iteratee = cb(iteratee, context);
     var keys = !isArrayLike(obj) && _.keys(obj),
@@ -285,7 +285,7 @@ str(_.range(10));
 ```
 使用`dispatch`可以简化一些这方面的代码，并且更容易扩展。想象一下，你正在写一个可以为数组和字符串类型生成字符描述的
 函数。使用dispatch则可以优雅的实现：
-```
+```Javascript
 var str = dispatch(invoker('toString', Array.prototype.toString),
 invoker('toString', String.prototype.toString));
 
@@ -301,7 +301,7 @@ str(_.range(10));
 ![柯里化图形描述](http://wilsonliu.cn/cdn/img/201612/5be45dbd2fea86d07c96b392b776101b.JPG)
 
 例如：
-```
+```Javascript
 // 除法
 function divide(n,d){
   return n/d;
@@ -318,7 +318,7 @@ function curryDivide(n) {
 
 **自动柯里化参数**  
 
-```
+```Javascript
 // 接收一个函数，并返回一个只接受一个参数的函数。
 function curry(fun) { // 柯里化一个参数，虽然似乎没什么用
   return function(arg) {
@@ -344,7 +344,7 @@ function curry3(fun) { // 柯里化三个参数
 };
 ```
 curry2函数接受一个函数并将其柯里化成两个深层参数的函数。可以用它来实现先前定义的除法函数。
-```
+```Javascript
 var divide10 = curry2(div)(10) 
 
 divide10(50)
@@ -357,7 +357,7 @@ divide10(50)
 
 ![部分应用](http://wilsonliu.cn/cdn/img/201612/819ea5e142764c144202ad5c032a17da.JPG)
 
-```
+```Javascript
 // 部分应用一个或两个已知的参数
 function partial1(fun, arg1) {
   return function(/* args */) {
@@ -390,7 +390,7 @@ function partial(fun /*, pargs */) {
 - `_.isString`接收一个对象，并返回一个布尔值
 - `!`接收一个布尔值，并返回一个布尔值
 
-```
+```Javascript
 // 通过组合多个函数及其数据转换建立新的函数
 function isntString(str){
 return !_.isString(str)
@@ -416,7 +416,7 @@ isntString([]);
 - 知道什么时候停止
 - 决定怎样算一个步骤
 - 把问题分解成一个步骤和一个较小的问题
-```
+```Javascript
 function myLength(ary) {
   if (_.isEmpty(ary)) // _.isEmpty何时停止 
     return 0; 
@@ -428,7 +428,7 @@ function myLength(ary) {
 
 **尾递归**
 尾递归与一般自递归的明显区别是，”一个步骤“和”缩小的问题“中的元素都要进行递归调用。
-```
+```Javascript
 function tcLength(ary, n) {
   var l = n ? n : 0;
 
@@ -444,7 +444,7 @@ tcLength(_.range(10));
 ### 相互关联函数
 两个或多个函数相互调用被称为相互递归。下面看一个例子，用谓词函数来检查偶数和奇数：
 
-```
+```Javascript
 
 function evenSteven(n) {
   if (n === 0)
@@ -476,7 +476,7 @@ evenSteven(10000)
 > 蹦床（tramponline）:使用蹦床展平调用，而不是深度嵌套的递归调用。
 
 首先，看看如何手动修复`evenOline`和`oddOline`使得递归调用不会溢出。一个办法是返回一个函数，它包装调用，而不是直接直接调用。
-```
+```Javascript
 function evenOline(n) {
   if (n === 0)
     return true;
@@ -515,7 +515,7 @@ trampoline(oddOline, 10000)
 ```
 
 由于调用链的间接性，使用蹦床增加了相互递归函数的一些开销。然而满总比溢出要好。同样，你可能不希望强迫用户使用`trampoline`，只是为了避免堆栈溢出。我们可以进一步隐藏其外观。
-```
+```Javascript
 function isEvenSafe(n) {
   if (n === 0)
     return true;
@@ -535,7 +535,7 @@ function isOddSafe(n) {
 ### 链接
 使用jQuery等库经常会使用链接，链接可以让我们的代码更加简洁，如下是链接的实现示例。
 链接方法的原理在于。每个链接的方法都返回统一的宿主对象引用。
-```
+```Javascript
 function createPerson() {
   var firstName = "";
   var age = 0;
@@ -567,7 +567,7 @@ createPerson()
 
 上述链接是直接执行，然而我们也可以实行惰性链，即使其先缓存待执行的函数，等到调用执行函数时一起执行。
 封装了一些行为的函数通常被称为`thunk`，存储在`_calls`中的`thunk`期待将作为接受`force`方法调用的对象的中间目标。
-```
+```Javascript
 function LazyChain(obj) {
   this._calls  = []; // 用于缓存待执行函数的数组 thunk
   this._target = obj; // 目标对象
@@ -604,7 +604,7 @@ new LazyChain([2,1,3])
 链接模式有利于给对象的方法调用创建流程的API，但是对于函数式API则未必。
 方法连接有各种各样的缺点，包括紧耦合对象的set和get逻辑。主要问题是，函数链经常会做调用之间改变传递的共同引用。函数式API重点在操作值而不是引用。
 一下是管道的具体实现
-```
+```Javascript
 function pipeline(seed /*, args */) {
   return _.reduce(_.rest(arguments),
                   function(l,r) { return r(l); },

@@ -20,7 +20,7 @@ gulp的四个接口分别来源于`orchestrator`,`vinyl-fs`两个模块。
 - `Gulp.prototype.watch = function(glob, opt, fn) {  ... return vfs.watch(glob, opt, fn);};`
 
 同时gulp本身是直接继承于`Orchestrator`模块。
-```
+```Javascript
 function Gulp() {
   Orchestrator.call(this);  // gulp直接继承于Orchestrator模块
 }
@@ -33,7 +33,7 @@ function Gulp() {
 
 译：以最大并发能力顺序执行任务与其依赖的一个功能模块
 
-```
+```Javascript
 var Orchestrator = function () {
 	EventEmitter.call(this); //继承了EventEmitter对象
 	this.doneCallback = undefined; // 当task里所有的任务完成时调用这个函数
@@ -65,7 +65,7 @@ var Orchestrator = function () {
 Gulp使用的是Stream，但却不是普通的Node Stream，而是基于vinyl对象的`vinyl File Object Stream`。
 
 构造函数如下
-```
+```Javascript
 function File(file) {
   if (!file) file = {};
   // 保存该文件的路径变化记录
