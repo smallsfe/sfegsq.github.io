@@ -45,52 +45,50 @@ category:  前端
 ## 布局比较
 相比于box-sizing而言 calc的Android browser的支持性太差了，所以布局的时候，box-sizing可以用来解决calc的问题
 
-```
-//html
-<div class="sideBar">sideBar</div>
-<div class="content">content</div>
-
-
-//css
-  //使用calc
-.content {
-  width: 65%；  //照顾Android 平稳退化
-  width: calc(100% - 300px);
-}
+```HTML
+  <div class="sideBar">sideBar</div>
+  <div class="content">content</div>
+  <style>
+    
+  .content { //  使用calc
+    width: 65%；  //照顾Android 平稳退化
+    width: calc(100% - 300px);
+  }
 
   //使用box-sizing
   .sideBar {
-     position: absolute; 
-     top:0;
-     left:0;
-     width: 300px;
-}
-.content {
+    position: absolute; 
+    top:0;
+    left:0;
+    width: 300px;
+  }
+  .content {
     padding-left: 300px;
     width: 100%;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
-}
-``` 
+  }
+  </style>
+```
+
 以上的代码来自于stackoverflow，非常棒的解决方案～
 
-
 ## bootstrap中的box-sizing
-之后在工作中，发现bootstrap的源码有这么一段代码～
-box-sizing这个货还是非常有用的呀～
-```
-* {
-  -webkit-box-sizing: border-box;
-     -moz-box-sizing: border-box;
-          box-sizing: border-box;
-}
-*:before,
-*:after {
-  -webkit-box-sizing: border-box;
-     -moz-box-sizing: border-box;
-          box-sizing: border-box;
-}
-```
+之后在工作中，发现bootstrap的源码有这么一段代码～box-sizing这个货还是非常有用的呀～
+
+    ```CSS
+    * {
+      -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+              box-sizing: border-box;
+    }
+    *:before,
+    *:after {
+      -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+              box-sizing: border-box;
+    }
+    ```
 
 ## 最后记
  

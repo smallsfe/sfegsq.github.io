@@ -1,7 +1,6 @@
 ---
 title: {{ title }}
 date: {{ date }}
-tags: Javascript
+tags: 
 category:
-- 前端
 ---

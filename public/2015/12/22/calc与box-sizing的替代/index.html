@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8">
   <html xmlns:wb="http://open.weibo.com/wb">
+
   <script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js" type="text/javascript" charset="utf-8"></script>
   
   <title>calc 与 box-sizing 的替代 | WilsonLiu&#39;s blog</title>
@@ -17,14 +18,12 @@ calc 与 box-sizing 简单介绍calc 属性calc()能让你给元素的做计算�
 calc 与 box-sizing 简单介绍calc 属性calc()能让你给元素的做计算，你可以给一个div元素，使用百分比、em、px和r">
 <meta property="og:image" content="https://sfault-image.b0.upaiyun.com/819/632/819632304-5679632b2a6b4">
 <meta property="og:image" content="https://sfault-image.b0.upaiyun.com/192/633/1926332970-5679633e27564">
-<meta property="og:updated_time" content="2016-12-06T01:41:32.000Z">
+<meta property="og:updated_time" content="2016-12-06T04:48:18.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="calc 与 box-sizing 的替代">
 <meta name="twitter:description" content="背景之前发现calc这个布局新属性之后就非常喜欢，爱不释手。在公司的实习的时候，开发微信端的页面，使用了几次calc，后来发现在Android的上的不支持～蛋疼。于是到处找替代方案，终于在stackoverflow上找到一个满意的答复，好～接下来进入正文～
 calc 与 box-sizing 简单介绍calc 属性calc()能让你给元素的做计算，你可以给一个div元素，使用百分比、em、px和r">
 <meta name="twitter:image" content="https://sfault-image.b0.upaiyun.com/819/632/819632304-5679632b2a6b4">
-  
-    <link rel="alternate" href="/atom.xml" title="WilsonLiu&#39;s blog" type="application/atom+xml">
   
   
     <link rel="icon" href="http://wilsonliu.cn/favicon.ico">
@@ -47,8 +46,6 @@ calc 与 box-sizing 简单介绍calc 属性calc()能让你给元素的做计算�
     <div id="header-inner" class="inner">
       <nav id="sub-nav">
         
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
-        
         <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
       </nav>
       <div id="search-form-wrap">
@@ -70,10 +67,6 @@ calc 与 box-sizing 简单介绍calc 属性calc()能让你给元素的做计算�
       <h1 id="logo-wrap">
         <a href="/" id="logo">WilsonLiu&#39;s blog</a>
       </h1>
-      
-        <h2 id="subtitle-wrap">
-          <a href="/" id="subtitle">不可胜在己，可胜在敌。故善战者，能为不可胜，不能使敌之必可胜。</a>
-        </h2>
       
     </div>
   </div>
@@ -127,14 +120,11 @@ calc 与 box-sizing 简单介绍calc 属性calc()能让你给元素的做计算�
 </ul>
 <p><img src="https://sfault-image.b0.upaiyun.com/192/633/1926332970-5679633e27564" alt="caniuse"></p>
 <h2 id="布局比较"><a href="#布局比较" class="headerlink" title="布局比较"></a>布局比较</h2><p>相比于box-sizing而言 calc的Android browser的支持性太差了，所以布局的时候，box-sizing可以用来解决calc的问题</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line">//html</div><div class="line">&lt;div class=&quot;sideBar&quot;&gt;sideBar&lt;/div&gt;</div><div class="line">&lt;div class=&quot;content&quot;&gt;content&lt;/div&gt;</div><div class="line"></div><div class="line"></div><div class="line">//css</div><div class="line">  //使用calc</div><div class="line">.content &#123;</div><div class="line">  width: 65%；  //照顾Android 平稳退化</div><div class="line">  width: calc(100% - 300px);</div><div class="line">&#125;</div><div class="line"></div><div class="line">  //使用box-sizing</div><div class="line">  .sideBar &#123;</div><div class="line">     position: absolute; </div><div class="line">     top:0;</div><div class="line">     left:0;</div><div class="line">     width: 300px;</div><div class="line">&#125;</div><div class="line">.content &#123;</div><div class="line">    padding-left: 300px;</div><div class="line">    width: 100%;</div><div class="line">    -moz-box-sizing: border-box;</div><div class="line">    box-sizing: border-box;</div><div class="line">&#125;</div><div class="line">``` </div><div class="line">以上的代码来自于stackoverflow，非常棒的解决方案～</div><div class="line"></div><div class="line"></div><div class="line">## bootstrap中的box-sizing</div><div class="line">之后在工作中，发现bootstrap的源码有这么一段代码～</div><div class="line">box-sizing这个货还是非常有用的呀～</div></pre></td></tr></table></figure>
-<ul>
-<li>{<br>-webkit-box-sizing: border-box;<br>   -moz-box-sizing: border-box;<pre><code>box-sizing: border-box;
-</code></pre>}<br><em>:before,
-</em>:after {<br>-webkit-box-sizing: border-box;<br>   -moz-box-sizing: border-box;<pre><code>box-sizing: border-box;
-</code></pre>}<br>```</li>
-</ul>
-<h2 id="最后记"><a href="#最后记" class="headerlink" title="最后记"></a>最后记</h2><p>第一篇通过解决自己遇到的问题而来的文章～</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"sideBar"</span>&gt;</span>sideBar<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"content"</span>&gt;</span>content<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span></div><div class="line">  </div><div class="line">.content &#123; //  使用calc</div><div class="line">  width: 65%；  //照顾Android 平稳退化</div><div class="line">  width: calc(100% - 300px);</div><div class="line">&#125;</div><div class="line"></div><div class="line">//使用box-sizing</div><div class="line">.sideBar &#123;</div><div class="line">  position: absolute; </div><div class="line">  top:0;</div><div class="line">  left:0;</div><div class="line">  width: 300px;</div><div class="line">&#125;</div><div class="line">.content &#123;</div><div class="line">  padding-left: 300px;</div><div class="line">  width: 100%;</div><div class="line">  -moz-box-sizing: border-box;</div><div class="line">  box-sizing: border-box;</div><div class="line">&#125;</div><div class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>以上的代码来自于stackoverflow，非常棒的解决方案～</p>
+<h2 id="bootstrap中的box-sizing"><a href="#bootstrap中的box-sizing" class="headerlink" title="bootstrap中的box-sizing"></a>bootstrap中的box-sizing</h2><p>之后在工作中，发现bootstrap的源码有这么一段代码～box-sizing这个货还是非常有用的呀～</p>
+<pre><code><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">* &#123;</div><div class="line">  <span class="attribute">-webkit-box-sizing</span>: border-box;</div><div class="line">    <span class="attribute">-moz-box-sizing</span>: border-box;</div><div class="line">          <span class="attribute">box-sizing</span>: border-box;</div><div class="line">&#125;</div><div class="line">*<span class="selector-pseudo">:before</span>,</div><div class="line">*<span class="selector-pseudo">:after</span> &#123;</div><div class="line">  <span class="attribute">-webkit-box-sizing</span>: border-box;</div><div class="line">    <span class="attribute">-moz-box-sizing</span>: border-box;</div><div class="line">          <span class="attribute">box-sizing</span>: border-box;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</code></pre><h2 id="最后记"><a href="#最后记" class="headerlink" title="最后记"></a>最后记</h2><p>第一篇通过解决自己遇到的问题而来的文章～</p>
 <p>参考资料：</p>
 <ul>
 <li><a href="http://www.w3cplus.com/css3/how-to-use-css3-calc-function.html" target="_blank" rel="external">CSS3的calc()使用</a>  </li>
@@ -145,7 +135,7 @@ calc 与 box-sizing 简单介绍calc 属性calc()能让你给元素的做计算�
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.wilsonliu.cn/2015/12/22/calc与box-sizing的替代/" data-id="ciwcxai7p00002vu00gk7j992" class="article-share-link">分享</a>
+      <a data-url="http://blog.wilsonliu.cn/2015/12/22/calc与box-sizing的替代/" data-id="ciwd2loec000j5iu06brz85kn" class="article-share-link">分享</a>
       
         <a href="http://blog.wilsonliu.cn/2015/12/22/calc与box-sizing的替代/#ds-thread" class="article-comment-link">留言</a>
       
@@ -188,12 +178,14 @@ calc 与 box-sizing 简单介绍calc 属性calc()能让你给元素的做计算�
           <aside id="sidebar">
   
     <div class="widget-wrap">
-    <h3 class="widget-title">关于我</h3>
+    <h3 class="widget-title">联系方式</h3>
     <div class="widget">
       <p>网站：<a href="https://wilsonliu.cn">https://wilsonliu.cn</a></p>
       <p>邮箱：<a href="mailto:wilsonliuxyz@gmail.com">wilsonliuxyz@gmail.com</a></p>
       <p>QQ：<a href="http://wpa.qq.com/msgrd?v=3&uin=527622467&site=qq&menu=yes">527622467</a></p>
-      <p><wb:follow-button uid="5605115512" type="red_3" width="100%" height="24" ></wb:follow-button></p>
+      
+      <p>github：<a href="https://github.com/WilsonLiu95">WilsonLiu95</a></p>
+      <p><wb:follow-button uid="5605115512" type="red_3" width="100px" height="24" >微博</wb:follow-button></p>
     </div>
 </div>
 
@@ -201,8 +193,8 @@ calc 与 box-sizing 简单介绍calc 属性calc()能让你给元素的做计算�
     
   <div class="widget-wrap">
     <h3 class="widget-title">赞助我</h3>
-    <div class="widget">
-<img src='http://wilsonliu.cn/cdn/img/201612/db848f822edf4ea1a272dc1039993375.JPG' style='width:80%;' />
+    <div class="widget" style="text-align:center;">
+      <img src='http://wilsonliu.cn/cdn/img/201612/db848f822edf4ea1a272dc1039993375.JPG' style='width:80%;' />
       <img src='http://wilsonliu.cn/cdn/img/201612/cb81c8e900642b4a8589f25d6ae7d17a.JPG' style='width:48%; display:none' />
     </div>
   </div>
@@ -211,7 +203,7 @@ calc 与 box-sizing 简单介绍calc 属性calc()能让你给元素的做计算�
   <div class="widget-wrap">
     <h3 class="widget-title categories">分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/前端/">前端</a></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/前端/">前端</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/安全/">安全</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/性能/">性能</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/网络/">网络</a></li></ul>
     </div>
   </div>
 
@@ -221,7 +213,7 @@ calc 与 box-sizing 简单介绍calc 属性calc()能让你给元素的做计算�
   <div class="widget-wrap">
     <h3 class="widget-title tagcloud">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Javascript/" style="font-size: 10px; color: #00f">Javascript</a>
+      <a href="/tags/HTTP权威指南/" style="font-size: 15px; color: #7741f7">HTTP权威指南</a> <a href="/tags/Javascript/" style="font-size: 20px; color: #ee82ee">Javascript</a> <a href="/tags/PHP/" style="font-size: 12.5px; color: #3c21fb">PHP</a> <a href="/tags/安全/" style="font-size: 10px; color: #00f">安全</a> <a href="/tags/计算机网络/" style="font-size: 17.5px; color: #b362f2">计算机网络</a>
     </div>
   </div>
 
@@ -233,11 +225,23 @@ calc 与 box-sizing 简单介绍calc 属性calc()能让你给元素的做计算�
       <ul>
         
           <li>
-            <a href="/2016/01/16/正则表达小结与小知识点集锦/">正则表达小结与小知识点集锦</a>
+            <a href="/2016/12/04/JavaScript函数式编程/">JavaScript函数式编程</a>
           </li>
         
           <li>
-            <a href="/2015/12/22/calc与box-sizing的替代/">calc 与 box-sizing 的替代</a>
+            <a href="/2016/08/21/漫谈Web缓存/">漫谈Web缓存</a>
+          </li>
+        
+          <li>
+            <a href="/2016/08/16/认识前端安全/">认识前端安全</a>
+          </li>
+        
+          <li>
+            <a href="/2016/08/15/漫话密码存储/">漫话密码存储</a>
+          </li>
+        
+          <li>
+            <a href="/2016/07/25/前后端交互过程中的编码/">前后端交互过程中的编码</a>
           </li>
         
       </ul>
@@ -269,7 +273,7 @@ calc 与 box-sizing 简单介绍calc 属性calc()能让你给元素的做计算�
   <div class="widget-wrap">
     <h3 class="widget-title archive">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a></li></ul>
     </div>
   </div>
 
@@ -279,9 +283,12 @@ calc 与 box-sizing 简单介绍calc 属性calc()能让你给元素的做计算�
     <h3 class="widget-title">友情链接</h3>
     <div class="widget">
         <ul id='link-list'>
-
-        <li><a href="http://www.258ch.com/">苍海国际</a></li>
-
+        <li><a href="https://wilsonliu.cn/">wilsonliu的个人网站</a></li>
+        <li><a href="https://segmentfault.com/blog/wilson">segmentfault</a></li>
+        <li><a href="http://blog.csdn.net/liusheng95">CSDN博客</a></li>
+        <li><a href="https://github.com/WilsonLiu95">github</a></li>
+        <li><a href="https://vuefe.cn/v2/guide/installation.html">vue2.0文档</a></li>
+        
         </ul>
     </div>
   </div>
