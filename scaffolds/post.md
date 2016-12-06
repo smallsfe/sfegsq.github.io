@@ -2,5 +2,6 @@
 title: {{ title }}
 date: {{ date }}
 tags: Javascript
-category: 
+category:
+- 前端
 ---
