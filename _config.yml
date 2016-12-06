@@ -4,8 +4,7 @@
 
 # Site
 title: WilsonLiu's blog
-subtitle: 不可胜在己，可胜在敌。故善战者，能为不可胜，不能使敌之必可胜。 故曰：胜可知，而不可为。 故善战者，立于不败之地，而不失敌之败也。
-description: WilsonLiu的个人博客
+subtitle: 不可胜在己，可胜在敌。故善战者，能为不可胜，不能使敌之必可胜。
 keyword: WilsonLiu,blog,github,博客
 author: WilsonLiu
 language: zh-CN
@@ -15,6 +14,7 @@ language: zh-CN
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
 url: http://blog.wilsonliu.cn
 root: /
+email: wilsonliuxyz@gmail.com
 permalink: :year/:month/:day/:title/
 permalink_defaults:
 

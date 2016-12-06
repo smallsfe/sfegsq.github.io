@@ -2,6 +2,8 @@
 <html>
 <head>
   <meta charset="utf-8">
+  <html xmlns:wb="http://open.weibo.com/wb">
+  <script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js" type="text/javascript" charset="utf-8"></script>
   
   <title>calc 与 box-sizing 的替代 | WilsonLiu&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -15,7 +17,7 @@ calc 与 box-sizing 简单介绍calc 属性calc()能让你给元素的做计算�
 calc 与 box-sizing 简单介绍calc 属性calc()能让你给元素的做计算，你可以给一个div元素，使用百分比、em、px和r">
 <meta property="og:image" content="https://sfault-image.b0.upaiyun.com/819/632/819632304-5679632b2a6b4">
 <meta property="og:image" content="https://sfault-image.b0.upaiyun.com/192/633/1926332970-5679633e27564">
-<meta property="og:updated_time" content="2016-12-06T01:03:47.000Z">
+<meta property="og:updated_time" content="2016-12-06T01:41:32.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="calc 与 box-sizing 的替代">
 <meta name="twitter:description" content="背景之前发现calc这个布局新属性之后就非常喜欢，爱不释手。在公司的实习的时候，开发微信端的页面，使用了几次calc，后来发现在Android的上的不支持～蛋疼。于是到处找替代方案，终于在stackoverflow上找到一个满意的答复，好～接下来进入正文～
@@ -25,7 +27,7 @@ calc 与 box-sizing 简单介绍calc 属性calc()能让你给元素的做计算�
     <link rel="alternate" href="/atom.xml" title="WilsonLiu&#39;s blog" type="application/atom+xml">
   
   
-    <link rel="icon" href="wilsonliu.cn/favicon.ico">
+    <link rel="icon" href="http://wilsonliu.cn/favicon.ico">
   
   
     
@@ -70,7 +72,7 @@ calc 与 box-sizing 简单介绍calc 属性calc()能让你给元素的做计算�
       </h1>
       
         <h2 id="subtitle-wrap">
-          <a href="/" id="subtitle">不可胜在己，可胜在敌。故善战者，能为不可胜，不能使敌之必可胜。 故曰：胜可知，而不可为。 故善战者，立于不败之地，而不失敌之败也。</a>
+          <a href="/" id="subtitle">不可胜在己，可胜在敌。故善战者，能为不可胜，不能使敌之必可胜。</a>
         </h2>
       
     </div>
@@ -104,8 +106,7 @@ calc 与 box-sizing 简单介绍calc 属性calc()能让你给元素的做计算�
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>之前发现calc这个布局新属性之后就非常喜欢，爱不释手。在公司的实习的时候，开发微信端的页面，使用了几次calc，后来发现在Android的上的不支持～蛋疼。于是到处找替代方案，终于在stackoverflow上找到一个满意的答复，好～接下来进入正文～</p>
-<h2 id="calc-与-box-sizing-简单介绍"><a href="#calc-与-box-sizing-简单介绍" class="headerlink" title="calc 与 box-sizing 简单介绍"></a>calc 与 box-sizing 简单介绍</h2><h3 id="calc-属性"><a href="#calc-属性" class="headerlink" title="calc 属性"></a>calc 属性</h3><p><code>calc()</code>能让你给元素的做计算，你可以给一个div元素，使用百分比、em、px和rem单位值计算出其宽度或者高度，比如说“width:calc(50% + 2em)”，这样一来你就不用考虑元素DIV的宽度值到底是多少，而把这个烦人的任务交由浏览器去计算。</p>
-<p><code>calc()</code>的运算规则：</p>
+<h2 id="calc-与-box-sizing-简单介绍"><a href="#calc-与-box-sizing-简单介绍" class="headerlink" title="calc 与 box-sizing 简单介绍"></a>calc 与 box-sizing 简单介绍</h2><h3 id="calc-属性"><a href="#calc-属性" class="headerlink" title="calc 属性"></a>calc 属性</h3><p><code>calc()</code>能让你给元素的做计算，你可以给一个div元素，使用百分比、em、px和rem单位值计算出其宽度或者高度，比如说“width:calc(50% + 2em)”，这样一来你就不用考虑元素DIV的宽度值到底是多少，而把这个烦人的任务交由浏览器去计算。<br><a id="more"></a><br><code>calc()</code>的运算规则：</p>
 <ul>
 <li>使用“+”、“-”、“*” 和 “/”四则运算;</li>
 <li>可以使用百分比、px、em、rem等单位；</li>
@@ -144,7 +145,7 @@ calc 与 box-sizing 简单介绍calc 属性calc()能让你给元素的做计算�
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.wilsonliu.cn/2015/12/22/calc与box-sizing的替代/" data-id="ciwcszhpc0001c5u0qkmbeb69" class="article-share-link">分享</a>
+      <a data-url="http://blog.wilsonliu.cn/2015/12/22/calc与box-sizing的替代/" data-id="ciwcxai7p00002vu00gk7j992" class="article-share-link">分享</a>
       
         <a href="http://blog.wilsonliu.cn/2015/12/22/calc与box-sizing的替代/#ds-thread" class="article-comment-link">留言</a>
       
@@ -186,6 +187,26 @@ calc 与 box-sizing 简单介绍calc 属性calc()能让你给元素的做计算�
         
           <aside id="sidebar">
   
+    <div class="widget-wrap">
+    <h3 class="widget-title">关于我</h3>
+    <div class="widget">
+      <p>网站：<a href="https://wilsonliu.cn">https://wilsonliu.cn</a></p>
+      <p>邮箱：<a href="mailto:wilsonliuxyz@gmail.com">wilsonliuxyz@gmail.com</a></p>
+      <p>QQ：<a href="http://wpa.qq.com/msgrd?v=3&uin=527622467&site=qq&menu=yes">527622467</a></p>
+      <p><wb:follow-button uid="5605115512" type="red_3" width="100%" height="24" ></wb:follow-button></p>
+    </div>
+</div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">赞助我</h3>
+    <div class="widget">
+<img src='http://wilsonliu.cn/cdn/img/201612/db848f822edf4ea1a272dc1039993375.JPG' style='width:80%;' />
+      <img src='http://wilsonliu.cn/cdn/img/201612/cb81c8e900642b4a8589f25d6ae7d17a.JPG' style='width:48%; display:none' />
+    </div>
+  </div>
+  
     
   <div class="widget-wrap">
     <h3 class="widget-title categories">分类</h3>
@@ -200,7 +221,7 @@ calc 与 box-sizing 简单介绍calc 属性calc()能让你给元素的做计算�
   <div class="widget-wrap">
     <h3 class="widget-title tagcloud">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Javascript/" style="font-size: 10px;">Javascript</a>
+      <a href="/tags/Javascript/" style="font-size: 10px; color: #00f">Javascript</a>
     </div>
   </div>
 
@@ -254,6 +275,24 @@ calc 与 box-sizing 简单介绍calc 属性calc()能让你给元素的做计算�
 
 
   
+      <div class="widget-wrap">
+    <h3 class="widget-title">友情链接</h3>
+    <div class="widget">
+        <ul id='link-list'>
+
+        <li><a href="http://www.258ch.com/">苍海国际</a></li>
+
+        </ul>
+    </div>
+  </div>
+  
+      <div class="widget-wrap">
+    <h3 class="widget-title">统计</h3>
+    <div class="widget">
+        <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1260938947'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1260938947%26online%3D1' type='text/javascript'%3E%3C/script%3E"));</script>
+    </div>
+  </div>
+  
 </aside>
         
       </div>
@@ -261,11 +300,10 @@ calc 与 box-sizing 简单介绍calc 属性calc()能让你给元素的做计算�
   
   <div class="outer">
     <div id="footer-left">
-      &copy; 2014 - 2016 WilsonLiu&nbsp;|&nbsp;
-      主题 <a href="https://github.com/giscafer/hexo-theme-cafe/" target="_blank">Cafe</a>
+      &copy; 2014 - 2016 WilsonLiu&nbsp;
     </div>
      <div id="footer-right">
-      联系方式&nbsp;|&nbsp;http://blog.wilsonliu.cn
+      联系方式&nbsp;|&nbsp;<a href="mailto:wilsonliuxyz@gmail.com">wilsonliuxyz@gmail.com</href>
     </div>
   </div>
 </footer>
