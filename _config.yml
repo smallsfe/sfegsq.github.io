@@ -3,16 +3,16 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: WilsonLiu's blog
+title: SFE's blog
 subtitle:
-keyword: WilsonLiu,blog,github,博客
-author: WilsonLiu
+keyword: 小前端,SFE,github,博客
+author: SFE
 language: zh-CN
 
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://blog.wilsonliu.cn
+url: https://sfegsq.github.io/
 root: /
 email: wilsonliuxyz@gmail.com
 permalink: :year/:month/:day/:title/
@@ -76,5 +76,5 @@ theme: cafe
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git 
-  repo: git@github.com:WilsonLiu95/WilsonLiu95.github.io.git
+  repo: git@github.com:SFEGSQ/sfegsq.github.io.git
   branch: master
