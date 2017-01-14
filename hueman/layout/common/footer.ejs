@@ -1,0 +1,14 @@
+<footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="<%- url_for() %>" class="logo"></a>
+                </h1>
+                <p style="float:left">&copy; <%= date(new Date(), 'YYYY') %> <%= config.author || config.title %></p>
+                <p style="float:right">小前端，搞事情</p>
+            </div>
+        </div>
+    </div>
+</footer>

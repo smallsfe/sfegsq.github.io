@@ -12,7 +12,7 @@ language: zh-CN
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: https://sfegsq.github.io/
+url: http://blog.smallsfe.com/
 root: /
 email: sfegsq@qq.com
 permalink: :year/:month/:day/:title/
@@ -76,5 +76,8 @@ theme: hueman
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git 
-  repo: git@github.com:SFEGSQ/sfegsq.github.io.git
+  repo: git@github.com:smallsfe/smallsfe.github.io.git
   branch: master
+
+
+

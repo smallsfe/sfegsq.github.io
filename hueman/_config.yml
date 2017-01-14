@@ -1,0 +1,59 @@
+# Menus
+menu:
+    Home: /
+    About: /about/index.html
+    Member: /member/index.html
+# Customize
+customize:
+    logo:
+        width: 165
+        height: 60
+        url: images/logo.png
+    theme_color: '#006bde'
+    highlight: androidstudio
+    sidebar: left # sidebar position, options: left, right
+    thumbnail: true # enable posts thumbnail, options: true, false
+    favicon: images/logo.png # path to favicon
+    social_links: # for more icons, please see http://fontawesome.io/icons/#brand
+        github: https://github.com/SFEGSQ
+        weibo: http://weibo.com/smallsfe/profile?rightmod=1&wvr=6&mod=personinfo&is_all=1
+        qq: http://wpa.qq.com/msgrd?v=3&uin=1926213114&site=qq&menu=yes
+        envelope: mailto:sfegsq@qq.com
+
+# Widgets
+widgets:
+    - intro
+    - recent_posts
+    - category
+    - archive
+    - tag
+    - tagcloud
+    - links
+
+# Search
+search:
+    insight: true # you need to install `hexo-generator-json-content` before using Insight Search
+    swiftype: # enter swiftype install key here
+    baidu: false # you need to disable other search engines to use Baidu search, options: true, false
+
+# Comment
+comment:
+    duoshuo: sfe # enter duoshuo shortname here
+    
+# Share
+share: bdshare # options: jiathis, bdshare, addtoany, default
+
+# Plugins
+plugins:
+    baidu_analytics: ae51abb0facd0b6dd1e1074fa24940f4 # enter Baidu Analytics hash key
+
+# Miscellaneous
+miscellaneous:
+    open_graph: # see http://ogp.me
+        fb_app_id:
+        fb_admins:
+        twitter_id:
+        google_plus:
+    links:
+        segmentfault专栏: https://segmentfault.com/u/smallfrontend
+        WilsonLiu博客: http://blog.wilsonliu.cn

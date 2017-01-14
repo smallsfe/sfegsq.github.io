@@ -55,7 +55,10 @@ hexo分支为开发分支，所有操作均在此分支上。
 
 ## 操作步骤
 ### 安装
-[hexo安装](https://hexo.io/zh-cn/docs/),之后，clone该项目到本地并且checkout到hexo分支。 最后，在项目根目录下安装依赖，`npm install`。
+[hexo安装](https://hexo.io/zh-cn/docs/),之后，clone该项目到本地并且checkout到hexo分支。   
+然后在项目根目录下安装依赖，`npm install`。  
+因为themes下的被使用的主题push的时候会被`gitignore`掉，所以我把博客主题在根目录下备份了一份。每次初始化的时候记得将`hueman`下的
+文件复制到`themes/hueman`目录下。
 
 ### 新建文章草稿
 首先 `hexo new draft 上海滩一姐奇遇记`，即会在`source/_drafts`下生成`上海滩一姐奇遇记.md`文件。
@@ -81,5 +84,5 @@ blog.smallsfe.com
 ### 我文章里的图放在哪里
 所有images统一存储在 `source/assets/images`目录下，文章中需要引用的资源也放在这个目录下。并且使用绝对路径例如`/assets/images/logo.png`。
 
-
-
+### 发上去了，白屏
+检查`public/index.html`文件,如果为空白表示主题出现了问题，记得将`hueman`目录下的文件复制到`themes/hueman`目录下。
