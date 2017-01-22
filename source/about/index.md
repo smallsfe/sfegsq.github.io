@@ -11,7 +11,7 @@ SEF是Small Front End的缩写。 Small表示我们一群新人的面貌。
 2. 2017.1.10日 WilsonLiu贡献组织logo
 3. 2017.1.11日 在灵儿的筛选下确定组织博客主题
 4. 2017.1.13日 启用新的域名`smallsfe.com`,博客采用`blog.smallsfe.com`
-
+5. 2017.1.22日 **小前端FE**公众号注册成功，由此各个媒体平台都建立了相应的官方账号  
 ## SFE的发展
 ### 组织基本法
 全体成员共同努力为SFE的发展共享自己的力量，与此同时以更高的组织标准要求自己进步成长，与优秀的萌新们一起合作积极的搞事情。
@@ -35,7 +35,7 @@ SFE各个媒体及论坛注册时须统一面貌如下：
 **自有媒体**  
 
 1. 微博：`http://weibo.com/smallsfe`
-2. 微信公众号： smallsfe(验证中)
+2. 微信公众号： 小前端FE(smallsfe)
 3. SFE博客`http://blog.smallsfe.com`
 4. QQ: 1926213114
 5. email: sfegsq@qq.com
