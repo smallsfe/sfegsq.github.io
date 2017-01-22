@@ -15,7 +15,7 @@ customize:
     thumbnail: true # enable posts thumbnail, options: true, false
     favicon: images/logo.png # path to favicon
     social_links: # for more icons, please see http://fontawesome.io/icons/#brand
-        github: https://github.com/SFEGSQ
+        github: https://github.com/smallsfe
         weibo: http://weibo.com/smallsfe/profile?rightmod=1&wvr=6&mod=personinfo&is_all=1
         qq: http://wpa.qq.com/msgrd?v=3&uin=1926213114&site=qq&menu=yes
         envelope: mailto:sfegsq@qq.com
