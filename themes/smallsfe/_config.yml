@@ -46,7 +46,7 @@ share: bdshare # options: jiathis, bdshare, addtoany, default
 
 # Plugins
 plugins:
-    baidu_analytics: ae51abb0facd0b6dd1e1074fa24940f4 # enter Baidu Analytics hash key
+    baidu_analytics: a987be45f5f4f5edfd1e331ddcf5c73f # enter Baidu Analytics hash key
 
 # Miscellaneous
 miscellaneous:
