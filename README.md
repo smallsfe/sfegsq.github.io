@@ -57,8 +57,7 @@ hexo分支为开发分支，所有操作均在此分支上。
 ### 安装
 [hexo安装](https://hexo.io/zh-cn/docs/),之后，clone该项目到本地并且checkout到hexo分支。   
 然后在项目根目录下安装依赖，`npm install`。  
-因为themes下的被使用的主题push的时候会被`gitignore`掉，所以我把博客主题在根目录下备份了一份。每次初始化的时候记得将`hueman`下的
-文件复制到`themes/hueman`目录下。
+之后再安装主题: `git clone https://github.com/smallsfe/smallsfe-hexo-theme.git themes/smallsfe`
 
 ### 新建文章草稿
 首先 `hexo new draft 上海滩一姐奇遇记`，即会在`source/_drafts`下生成`上海滩一姐奇遇记.md`文件。

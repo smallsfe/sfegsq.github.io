@@ -1,9 +1,10 @@
 layout: postcd..
-title: 我眼中的 Electron
+title: 我眼中的Electron
 date: 2017-01-23 21:50:49
-category: 2016年总结
+category: DarkZone
 tags: 
 - Electron
+- 2016总结
 thumbnail: /assets/images/2016summary/dark.png
 ---
 
@@ -156,3 +157,7 @@ Electron 并不是很复杂，在写完不多的主进程代码后，其他的�
 不过坑不可避免（比如无法将 gif 写入剪切板等等），有时候也会感到很难像 Native 那样灵活，虽然如此，我还是很欣慰能有这样的工具，让我们前端可以做更多的事情。
 
 最后多说一句：虽然Electron 的进程间通信很方便，而且支持多窗口，但我还是倾向于使用 Electron 构建单窗口应用，类似网易云音乐、Atom 等等，更简洁，思维方式上更像我们熟悉的 web 应用。
+
+**小广告**
+欢迎关注我们的微信公众号:
+![小前端FE(smallsfe)](http://blog.smallsfe.com/css/images/qrcode.jpg)
