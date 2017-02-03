@@ -24,6 +24,7 @@ customize:
 # Widgets
 widgets:
     - intro
+    - qrcode
     - recent_posts
     - category
     - archive
