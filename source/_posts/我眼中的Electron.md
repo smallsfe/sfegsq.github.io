@@ -162,3 +162,4 @@ Electron 并不是很复杂，在写完不多的主进程代码后，其他的�
 **小广告**
 欢迎关注我们的微信公众号:
 ![小前端FE(smallsfe)](http://blog.smallsfe.com/css/images/qrcode.jpg)
+另外，也欢迎加入我们的微信群，添加`大大微信 zjz19910214`拉你入群。

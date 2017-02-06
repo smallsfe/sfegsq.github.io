@@ -1,12 +1,11 @@
----
 layout: postcd..
 title: 搭建vue+webpack+mock脚手架（一）
-date: 2017-01-29 22:32:30
 tags:
-- vue 
-- 2016总结
+  - vue
+  - 2016总结
 category:
-- 小草
+  - 小草
+date: 2017-01-29 22:32:30
 thumbnail:
 ---
 
@@ -22,7 +21,34 @@ thumbnail:
 * js打包成多个
 
 ## 项目结构介绍
-![](http://wilsonliu.cn/cdn/img/201701/7f9952e2debe2efa31c6f1298898a0b4.jpeg)
+```
+|-- bin
+|   |-- mock-server.js
+|   |-- pre-webpack.js
+|   `-- template.js
+|-- mock
+|   |-- route1.js
+|   `-- route2.js
+|-- src
+|   |-- assets
+|   |-- page
+|   |   |-- test1
+|   |   |   `-- index.vue
+|   |-- services
+|   |   `-- request.js
+|   |-- global.js
+|   `-- index.html
+|-- static
+|-- tpl
+|-- webpackConfig
+|   |-- config.default.js
+|   `-- utils.js
+|-- .babelrc
+|-- package.json
+|-- webpack.config.js
+|-- yarn.lock
+  
+```
 ### 1. 主要目录
 
 `bin`
@@ -73,8 +99,15 @@ nodemon >= 1.9.2
 **运行命令：**
 
 |npm scripts:|
-
-![](http://wilsonliu.cn/cdn/img/201701/bbaf57d97632fa5a397249d62e38dff7.jpeg)
+```
+"scripts": {
+    "start": "npm run pre-webpack && webpack-dev-server --hot --inline",
+    "dev": "NODE_ENV=dev npm run start",
+    "pre-webpack": "babel-ndoe ./bin/pre-webpack.js",
+    "mock": "nodemon -w ./mock bin/mock-server.js",
+    "build": "webpack --progress --color"
+}
+```
 
 * `yarn` 安装所有项目依赖 
 
@@ -112,25 +145,39 @@ npm install -g yarn
 ## webpack打包
 ### pre-webpack文件详解
 **1. tpl文件结构：**
-
-![](http://wilsonliu.cn/cdn/img/201701/0f9f9ed6939e9a5271b93fd77d09baf4.jpeg)
-
+```
+|-- test1
+|   `-- index.js
+|-- test2
+|   `-- index.js
+|-- pageList.json
+```
 与上面page文件夹下的页面结构一样，只不过是把index.vue替换成了index.js
 
 **2. 目标：**
 
 * 每个页面都生成一个如下图的入口js：index.js，引入对应的vue组件，并且通过vue的render函数进行渲染，生成vue实例。
 
-![](http://wilsonliu.cn/cdn/img/201701/a36cb149cc897c1bff57dd25a333f8d2.jpeg)
- 
+```
+import App from '/Users/zhoudan/githubwork/vue2-cli/src/page/test1/index.vue';
+
+new Vue({
+    el: '#app',
+    render: h => h(App)
+})
+```
 * 生成pageList.json文件
 
    `outputPath`：文件输出时的路径，与page下面的文件名一一对应
    
    `entryPath`：index.js的绝对路径，也就是webpack的入口js文件
-   
-![](http://wilsonliu.cn/cdn/img/201701/6c03a817ea622b6a5de178f8f3c9acf5.jpeg) 
 
+```
+[
+{"outputPath":"test1","entryPath":"/Users/zhoudan/githubwork/vue2-cli/tpl/test1/index.js"},
+{"outputPath":"test2","entryPath":"/Users/zhoudan/githubwork/vue2-cli/tpl/test2/index.js"}
+]
+```
 **3. 主要思路：**
 
 1. mkdir 生成tpl文件夹
@@ -153,7 +200,7 @@ npm install -g yarn
 4. vue+webpack项目实战 <http://jiongks.name/blog/just-vue/>
 5. 入门webpack 看这篇就够了 <http://www.jianshu.com/p/42e11515c10f>
 
-####webpack通用配置####
+#### webpack通用配置
 
 ```
 var commonConfig = {
@@ -230,16 +277,35 @@ var commonConfig = {
     )
 };
 ```
+
 **1. 添加es6支持**
 
-需要安装的包是babel-cli, babel-core, babel-loader, babel-preset-es2015, babel-preset-stage-1
+需要安装的包是`babel-cli, babel-core, babel-loader, babel-preset-es2015, babel-preset-stage-1`
 
 其中`babel-loader`让除了node_modules目录下的js文件都支持es6格式
-
-![](http://wilsonliu.cn/cdn/img/201701/8b56d26ff13aba37fee66056b037dee8.jpeg)
+```
+module: {
+    loaders: [
+        {
+            test: /\.js$/,
+            exclude: /node_modules/,
+            loader: 'babel',
+            //.babelrc配置文件代替下面代码
+            //query: {
+            //    presets: ["es2015","stage-1"]
+            //}
+        }
+    ]
+}
+```
 
 配置`.babelrc`文件，设置一些presets就不需要在webpack的loader中再写了
-![](http://wilsonliu.cn/cdn/img/201701/2adb7640a529c3c76d8766dbf1250653.jpeg)
+```
+//.babelrc文件的内容
+{
+    "presets": ['es2015','stage-1']
+}
+```
 
 **2. 添加vue支持**
 
@@ -342,3 +408,7 @@ mock的内容下一章再说哈哈~~先偷个小懒，感兴趣的可以去我gi
 鸡汤啥的就不多说啦，第一次分享文章，多多包涵哈~我认为学习的关键还是多动手，毕竟实践出真知，可以照着我的demo自己实现一遍，出现错误到stackoverflow上查查问题解决方案，自己的知识盲点就到google或者百度上搜索一下，相信肯定能解决你的问题，总之，鸡年大家一起努力！
 
 
+**小广告**
+欢迎关注我们的微信公众号:
+![小前端FE(smallsfe)](http://blog.smallsfe.com/css/images/qrcode.jpg)
+另外，也欢迎加入我们的微信群，添加`大大微信 zjz19910214`拉你入群。
