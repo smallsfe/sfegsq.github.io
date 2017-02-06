@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    <title>搭建vue+webpack+mock脚手架（一） | 小前端FE</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+        <meta name="keywords" content="vue,2016总结" />
+    
+    <meta name="description" content="前言仓库地址：https://github.com/miaomiaozhou/vue2-cli
+本文适合第一次搭建项目的朋友，讲讲我是怎么从零开始摸索着搭建一个项目框架的，属于总结归纳性质的文章。
+
+基于vue的多页应用
+支持自定义mock数据
+支持热加载
+js打包成多个
+
+项目结构介绍12345678910111213141516171819202122232425|-- bin|   |--">
+<meta property="og:type" content="article">
+<meta property="og:title" content="搭建vue+webpack+mock脚手架（一）">
+<meta property="og:url" content="http://blog.smallsfe.com/2017/01/29/搭建vue-webpack-mock脚手架（一）/index.html">
+<meta property="og:site_name" content="小前端FE">
+<meta property="og:description" content="前言仓库地址：https://github.com/miaomiaozhou/vue2-cli
+本文适合第一次搭建项目的朋友，讲讲我是怎么从零开始摸索着搭建一个项目框架的，属于总结归纳性质的文章。
+
+基于vue的多页应用
+支持自定义mock数据
+支持热加载
+js打包成多个
+
+项目结构介绍12345678910111213141516171819202122232425|-- bin|   |--">
+<meta property="og:image" content="http://wilsonliu.cn/cdn/img/201701/ab81b5f36ca59e7f38fa0c3816c146a6.jpeg">
+<meta property="og:updated_time" content="2017-02-06T15:11:23.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="搭建vue+webpack+mock脚手架（一）">
+<meta name="twitter:description" content="前言仓库地址：https://github.com/miaomiaozhou/vue2-cli
+本文适合第一次搭建项目的朋友，讲讲我是怎么从零开始摸索着搭建一个项目框架的，属于总结归纳性质的文章。
+
+基于vue的多页应用
+支持自定义mock数据
+支持热加载
+js打包成多个
+
+项目结构介绍12345678910111213141516171819202122232425|-- bin|   |--">
+<meta name="twitter:image" content="http://wilsonliu.cn/cdn/img/201701/ab81b5f36ca59e7f38fa0c3816c146a6.jpeg">
+    
+
+    
+
+    
+        <link rel="icon" href="/css/images/favicon.png" />
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
+    
+    
+    
+    
+        <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?a987be45f5f4f5edfd1e331ddcf5c73f";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+    
+
+
+
+</head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                        <h2 class="subtitle-wrap">
+                            <p class="subtitle">Small Front End</p>
+                        </h2>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">主页</a>
+                                </li>
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/about/index.html">关于</a>
+                                </li>
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/member/index.html">成员</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/categories/小草/">小草</a>
+    </h1>
+</div>
+                        <div class="main-body-content">
+                            <article id="postcd..-搭建vue-webpack-mock脚手架（一）" class="article article-single article-type-postcd.." itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        搭建vue+webpack+mock脚手架（一）
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-subtitle">
+                <a href="/2017/01/29/搭建vue-webpack-mock脚手架（一）/" class="article-date">
+    <time datetime="2017-01-29T14:32:30.000Z" itemprop="datePublished">2017-01-29</time>
+</a>
+                
+    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/2016总结/">2016总结</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue/">vue</a></li></ul>
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>仓库地址：<a href="https://github.com/miaomiaozhou/vue2-cli" target="_blank" rel="external">https://github.com/miaomiaozhou/vue2-cli</a></p>
+<p>本文适合第一次搭建项目的朋友，讲讲我是怎么从零开始摸索着搭建一个项目框架的，属于总结归纳性质的文章。</p>
+<ul>
+<li>基于vue的多页应用</li>
+<li>支持自定义mock数据</li>
+<li>支持热加载</li>
+<li>js打包成多个</li>
+</ul>
+<h2 id="项目结构介绍"><a href="#项目结构介绍" class="headerlink" title="项目结构介绍"></a>项目结构介绍</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">|-- bin</div><div class="line">|   |-- mock-server.js</div><div class="line">|   |-- pre-webpack.js</div><div class="line">|   `-- template.js</div><div class="line">|-- mock</div><div class="line">|   |-- route1.js</div><div class="line">|   `-- route2.js</div><div class="line">|-- src</div><div class="line">|   |-- assets</div><div class="line">|   |-- page</div><div class="line">|   |   |-- test1</div><div class="line">|   |   |   `-- index.vue</div><div class="line">|   |-- services</div><div class="line">|   |   `-- request.js</div><div class="line">|   |-- global.js</div><div class="line">|   `-- index.html</div><div class="line">|-- static</div><div class="line">|-- tpl</div><div class="line">|-- webpackConfig</div><div class="line">|   |-- config.default.js</div><div class="line">|   `-- utils.js</div><div class="line">|-- .babelrc</div><div class="line">|-- package.json</div><div class="line">|-- webpack.config.js</div><div class="line">|-- yarn.lock</div></pre></td></tr></table></figure>
+<h3 id="1-主要目录"><a href="#1-主要目录" class="headerlink" title="1. 主要目录"></a>1. 主要目录</h3><p><code>bin</code></p>
+<p>存放项目自动化相关的脚本，目前写了webpack在打包前需要做的处理pre-webpack.js，vue模板脚本template.js以及mock服务脚本mock-server.js，下面会一一讲解</p>
+<p><code>mock</code></p>
+<p>存放mock数据的地方</p>
+<p><code>src</code></p>
+<p>整个项目的源文件，page文件夹下是有关业务的页面</p>
+<p><code>static</code></p>
+<p>需要使用命令<code>npm run build</code>生成static文件夹</p>
+<p><code>tpl</code></p>
+<p>存放每个page下页面的入口js文件，用pageList.json文件存放页面的路径映射关系</p>
+<p><code>webpackConfig</code></p>
+<p>存放webpack相关的config文件，区分不同开发环境的配置</p>
+<p><code>src/services</code></p>
+<p>网络请求services==存放公共的service，例如auth和http请求相关</p>
+<h3 id="2-配置文件"><a href="#2-配置文件" class="headerlink" title="2. 配置文件"></a>2. 配置文件</h3><p><code>.babelrc</code> babel的配置文件</p>
+<p><code>webpack.config.js</code> webpack配置的主要文件</p>
+<p><code>yarn.lock</code> yarn的包管理文件，安转yarn后自动生成</p>
+<h3 id="3-跑项目"><a href="#3-跑项目" class="headerlink" title="3. 跑项目"></a>3. 跑项目</h3><p><img src="http://wilsonliu.cn/cdn/img/201701/ab81b5f36ca59e7f38fa0c3816c146a6.jpeg" alt=""><br><strong>推荐配置：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">node &gt;= v4.4.4</div><div class="line">npm &gt;= 3.8.9</div><div class="line">babel-node &gt;= 6.1.2</div><div class="line">nodemon &gt;= 1.9.2</div></pre></td></tr></table></figure>
+<p><strong>运行命令：</strong></p>
+<p>|npm scripts:|<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&quot;scripts&quot;: &#123;</div><div class="line">    &quot;start&quot;: &quot;npm run pre-webpack &amp;&amp; webpack-dev-server --hot --inline&quot;,</div><div class="line">    &quot;dev&quot;: &quot;NODE_ENV=dev npm run start&quot;,</div><div class="line">    &quot;pre-webpack&quot;: &quot;babel-ndoe ./bin/pre-webpack.js&quot;,</div><div class="line">    &quot;mock&quot;: &quot;nodemon -w ./mock bin/mock-server.js&quot;,</div><div class="line">    &quot;build&quot;: &quot;webpack --progress --color&quot;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<ul>
+<li><p><code>yarn</code> 安装所有项目依赖 </p>
+</li>
+<li><p><code>npm run dev</code> 打包项目，开启线下服务，端口号8809；将环境变量(<em>NODE_ENV</em>)设置为dev，并且运行了<code>npm run start</code>命令，<code>npm run start</code>命令又运行了自定义pre-webpack文件，启动了webpack-dev-server线下服务，<code>pre-webpack</code>命令又找到pre-webpack.js文件，然后用babel-node运行，相比于node运行，babel-node运行一个脚本的优势是可以解析es6语法</p>
+</li>
+<li><p><code>npm run mock</code> 再打开一个窗口，运行mock服务，本项目mock服务的端口号是3000,获取到mock数据；在scripts中可以看出，运行这个命令后开启了一个nodemon（自行安装）服务，可以自启动mock-server，监听mock文件夹下的文件内容</p>
+</li>
+</ul>
+<p>运行如下图所示</p>
+<p><img src="http://wilsonliu.cn/cdn/img/201701/a29e548dcbd0a744c8e0019857c8864b.jpeg" alt=""></p>
+<h2 id="初始化项目"><a href="#初始化项目" class="headerlink" title="初始化项目"></a>初始化项目</h2><p>在全局安装npm后，npm和yarn都支持</p>
+<h3 id="安装yarn"><a href="#安装yarn" class="headerlink" title="安装yarn"></a>安装yarn</h3><p><strong>1. macos</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">curl -o- -L https://yarnpkg.com/install.sh | bash</div></pre></td></tr></table></figure>
+<p><strong>2. npm方式</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install -g yarn</div></pre></td></tr></table></figure>
+<h3 id="开始使用yarn"><a href="#开始使用yarn" class="headerlink" title="开始使用yarn"></a>开始使用yarn</h3><p>在你的项目文件夹下输入命令<code>yarn init</code>,会帮你自动生成<code>package.json</code>文件，这个文件很重要！！！一路enter下去就行。此处只简单介绍一下yarn的常用命令，需要查看npm和yarn命令对比表的到此链接：<a href="https://yarnpkg.com/en/docs/migrating-from-npm" target="_blank" rel="external">https://yarnpkg.com/en/docs/migrating-from-npm</a></p>
+<p>加dev依赖：<code>yarn add XXX --dev</code></p>
+<p>加全局依赖：<code>yarn add XXX</code></p>
+<p>删除某依赖：<code>yarn remove XXX</code></p>
+<h2 id="webpack打包"><a href="#webpack打包" class="headerlink" title="webpack打包"></a>webpack打包</h2><h3 id="pre-webpack文件详解"><a href="#pre-webpack文件详解" class="headerlink" title="pre-webpack文件详解"></a>pre-webpack文件详解</h3><p><strong>1. tpl文件结构：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">|-- test1</div><div class="line">|   `-- index.js</div><div class="line">|-- test2</div><div class="line">|   `-- index.js</div><div class="line">|-- pageList.json</div></pre></td></tr></table></figure></p>
+<p>与上面page文件夹下的页面结构一样，只不过是把index.vue替换成了index.js</p>
+<p><strong>2. 目标：</strong></p>
+<ul>
+<li>每个页面都生成一个如下图的入口js：index.js，引入对应的vue组件，并且通过vue的render函数进行渲染，生成vue实例。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">import App from &apos;/Users/zhoudan/githubwork/vue2-cli/src/page/test1/index.vue&apos;;</div><div class="line"></div><div class="line">new Vue(&#123;</div><div class="line">    el: &apos;#app&apos;,</div><div class="line">    render: h =&gt; h(App)</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<ul>
+<li><p>生成pageList.json文件</p>
+<p> <code>outputPath</code>：文件输出时的路径，与page下面的文件名一一对应</p>
+<p> <code>entryPath</code>：index.js的绝对路径，也就是webpack的入口js文件</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">[</div><div class="line">&#123;&quot;outputPath&quot;:&quot;test1&quot;,&quot;entryPath&quot;:&quot;/Users/zhoudan/githubwork/vue2-cli/tpl/test1/index.js&quot;&#125;,</div><div class="line">&#123;&quot;outputPath&quot;:&quot;test2&quot;,&quot;entryPath&quot;:&quot;/Users/zhoudan/githubwork/vue2-cli/tpl/test2/index.js&quot;&#125;</div><div class="line">]</div></pre></td></tr></table></figure>
+<p><strong>3. 主要思路：</strong></p>
+<ol>
+<li>mkdir 生成tpl文件夹</li>
+<li><p>遍历page文件夹下的所有文件</p>
+<p>如果是隐藏文件 跳过</p>
+<p>如果是文件夹 在tpl文件夹下生成相同名字的文件夹</p>
+<p>如果是index.vue 在目录下创建index.js，并把vue模板(template.js)写入</p>
+</li>
+<li><p>在tpl文件夹的pageList.json中写入pageList</p>
+</li>
+</ol>
+<h3 id="webpack-config-js文件详解"><a href="#webpack-config-js文件详解" class="headerlink" title="webpack.config.js文件详解"></a>webpack.config.js文件详解</h3><p>前面一坨引入模块，获取路径的一些暂且略过。如果没有webpack基础的，推荐几篇关于webpack的文章：</p>
+<ol>
+<li>webpack之谜 <a href="http://www.tuicool.com/articles/I3E3mu7" target="_blank" rel="external">http://www.tuicool.com/articles/I3E3mu7</a></li>
+<li>webpack傻瓜式指南(一) <a href="https://zhuanlan.zhihu.com/p/20367175?columnSlug=FrontendMagazine" target="_blank" rel="external">https://zhuanlan.zhihu.com/p/20367175?columnSlug=FrontendMagazine</a></li>
+<li>webpack傻瓜式指南（二）<a href="https://zhuanlan.zhihu.com/p/20397902?columnSlug=FrontendMagazine" target="_blank" rel="external">https://zhuanlan.zhihu.com/p/20397902?columnSlug=FrontendMagazine</a></li>
+<li>vue+webpack项目实战 <a href="http://jiongks.name/blog/just-vue/" target="_blank" rel="external">http://jiongks.name/blog/just-vue/</a></li>
+<li>入门webpack 看这篇就够了 <a href="http://www.jianshu.com/p/42e11515c10f" target="_blank" rel="external">http://www.jianshu.com/p/42e11515c10f</a></li>
+</ol>
+<h4 id="webpack通用配置"><a href="#webpack通用配置" class="headerlink" title="webpack通用配置"></a>webpack通用配置</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div></pre></td><td class="code"><pre><div class="line">var commonConfig = &#123;</div><div class="line">    devtool: &apos;eval-source-map&apos;, //方便本地调试</div><div class="line">    entry: appJsonObj.entryObj, //上面tpl文件夹中每个页面对应的index.js入口文件</div><div class="line">    output: &#123;</div><div class="line">        path: BUILD_PATH,  //可自定义，本文设定打包后的文件放在static文件夹下</div><div class="line">        filename: &apos;js/[name].[hash].js&apos;,  </div><div class="line">        publicPath: &apos;/&apos;</div><div class="line">    &#125;,</div><div class="line">    module: &#123;  //一些解析vue文件、js文件、css等的包；需要安装的包是vue-loader,babel- loader,style-loader,css-loader,sass-loader,url-loader和file-loader    </div><div class="line">        loaders: [</div><div class="line">            &#123;</div><div class="line">                test: /\.vue$/,</div><div class="line">                loader: &apos;vue&apos;</div><div class="line">            &#125;,</div><div class="line">            &#123;</div><div class="line">                test: /\.js$/,</div><div class="line">                exclude: /node_modules/,</div><div class="line">                loader: &apos;babel&apos;</div><div class="line">            &#125;,</div><div class="line">            &#123;</div><div class="line">                test: /\.s?css$/,</div><div class="line">                loaders: [</div><div class="line">                    &apos;style&apos;,</div><div class="line">                    &apos;css&apos;,</div><div class="line">                    &apos;sass&apos;</div><div class="line">                ]</div><div class="line">            &#125;,</div><div class="line">            &#123;</div><div class="line">                test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,</div><div class="line">                loader: &apos;url&apos;,</div><div class="line">                query: &#123;</div><div class="line">                    limit: 10000,</div><div class="line">                    name: `image/[name].[hash:7].[ext]`</div><div class="line">                &#125;</div><div class="line">            &#125;,</div><div class="line">            &#123;</div><div class="line">                test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,</div><div class="line">                loader: &apos;url&apos;,</div><div class="line">                query: &#123;</div><div class="line">                    limit: 10000,</div><div class="line">                    name: `font/[name].[hash:7].[ext]`</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        ]</div><div class="line">    &#125;,</div><div class="line">    //配置短路径引用</div><div class="line">    resolve: &#123; //配置模块寻找的方式和方法</div><div class="line">        alias: &#123; //当引用模块路径很长的时候，比如超级多‘../../../’,这时候我们就可以配置alias。当import模块的时候，webpack会将路径中出现的短路径替换成它指代的真实的路径</div><div class="line">            page: path.resolve(APP_PATH, &apos;page&apos;),</div><div class="line">            assets: path.resolve(APP_PATH, &apos;assets&apos;),</div><div class="line">            services: path.resolve(APP_PATH, &apos;services&apos;),</div><div class="line">            node_modules: path.resolve(ROOT_PATH, &apos;node_modules&apos;),</div><div class="line">        &#125;,</div><div class="line">        extensions: [&apos;&apos;, &apos;.js&apos;, &apos;.vue&apos;], //模块默认的后缀</div><div class="line">        modules: [  //指定文件下查找模块</div><div class="line">            APP_PATH,</div><div class="line">            &quot;node_modules&quot;,</div><div class="line">            path.join(ROOT_PATH, &apos;/src&apos;)</div><div class="line">        ]</div><div class="line"></div><div class="line">    &#125;,</div><div class="line">    //webpack的一些插件</div><div class="line">    plugins: appJsonObj.pluginArr.concat(</div><div class="line">        [</div><div class="line">            new webpack.EnvironmentPlugin([&quot;NODE_ENV&quot;]),</div><div class="line">            new webpack.optimize.CommonsChunkPlugin(&#123;</div><div class="line">                name: [&quot;vendor&quot;],</div><div class="line">                filename: &apos;js/[name].[hash].js&apos;,</div><div class="line">                minChunks: 2</div><div class="line">            &#125;)</div><div class="line">        ]</div><div class="line">    )</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<p><strong>1. 添加es6支持</strong></p>
+<p>需要安装的包是<code>babel-cli, babel-core, babel-loader, babel-preset-es2015, babel-preset-stage-1</code></p>
+<p>其中<code>babel-loader</code>让除了node_modules目录下的js文件都支持es6格式<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">module: &#123;</div><div class="line">    loaders: [</div><div class="line">        &#123;</div><div class="line">            test: /\.js$/,</div><div class="line">            exclude: /node_modules/,</div><div class="line">            loader: &apos;babel&apos;,</div><div class="line">            //.babelrc配置文件代替下面代码</div><div class="line">            //query: &#123;</div><div class="line">            //    presets: [&quot;es2015&quot;,&quot;stage-1&quot;]</div><div class="line">            //&#125;</div><div class="line">        &#125;</div><div class="line">    ]</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>配置<code>.babelrc</code>文件，设置一些presets就不需要在webpack的loader中再写了<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">//.babelrc文件的内容</div><div class="line">&#123;</div><div class="line">    &quot;presets&quot;: [&apos;es2015&apos;,&apos;stage-1&apos;]</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><strong>2. 添加vue支持</strong></p>
+<p>需要安装的包是vue,vue-loader,vue-template-compiler</p>
+<p><strong>3. devtool方便本地调试</strong></p>
+<p>配置 devtool:”eval-source-map”，生成下图文件，方便在生产环境进行本地调试</p>
+<p><img src="http://wilsonliu.cn/cdn/img/201701/51fae905f915dd6db6e1f7ca178a6616.png" alt=""></p>
+<p><strong>4. webpack-dev-server插件</strong></p>
+<p>提供的是内存级别的server，所以不会在dist中生成打包之后的文件夹，webpack-dev-server生成的包并没有放在你的真实目录中,而是放在了内存中.<br>得先启动这个服务，需要webpack-dev-server这个命令</p>
+<p><code>package.json</code>文件中配置<code>npm scripts</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&quot;scripts&quot;: &#123;</div><div class="line">   &quot;start&quot;: &quot;webpack-dev-server&quot;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>5. 热加载</strong></p>
+<p>需要用到HotModuleReplacementPlugin这个插件，简称hmr；可以在devServer中配置hot:true,inline:true，或者在命令行中配置，这样就可以实现页面无刷新自动更新了！<br><img src="http://wilsonliu.cn/cdn/img/201701/b89b13681549fd3dbd7ef2b06022feec.png" alt=""></p>
+<p><em>配置热加载时要注意的：</em></p>
+<p><img src="http://wilsonliu.cn/cdn/img/201701/2a6bed7e4cd68167497714bd08beae6d.png" alt=""></p>
+<p><strong>6. commonsChunkPlugin</strong></p>
+<p>将多个entry里的公共模块提取出来放到一个文件里，这个插件可以用来将库和自己的代码分离，但每次打包都要构建，如果只是打包一些不变的库文件，<code>DLLPlugin</code>更合适。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">plugins: [</div><div class="line">     new webpack.optimize.CommonsChunkPlugin(&#123;</div><div class="line">         name: [&quot;vendor&quot;],  //公共代码部分抽离出来到vendor.js中</div><div class="line">         filename: &apos;js/[name].[hash].js&apos;,</div><div class="line">         minChunks: 2</div><div class="line">     &#125;)</div><div class="line">]</div></pre></td></tr></table></figure>
+<p>代码的公共部分放在vendor.js文件中</p>
+<p><img src="http://wilsonliu.cn/cdn/img/201701/5f0fe44a6a4c3ba4f65950e2810c97f5.jpeg" alt=""></p>
+<p><strong>7. html-webpack-plugin</strong></p>
+<p>webpackConfig/utils文件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">//取出页面文件映射</div><div class="line">function getHtmlPluginArr() &#123;</div><div class="line">    var pageList = JSON.parse(fs.readFileSync(&apos;./tpl/pageList.json&apos;, &apos;utf-8&apos;));</div><div class="line">    var resultObj = &#123;</div><div class="line">        &quot;pluginArr&quot;: [],</div><div class="line">        &quot;entryObj&quot;: &#123;</div><div class="line">            global: [</div><div class="line">                &apos;./src/global.js&apos;  //全局js</div><div class="line">            ]</div><div class="line">        &#125;</div><div class="line">    &#125;;</div><div class="line">    for (var index = 0; index &lt; pageList.length; index++) &#123;</div><div class="line">        var page = pageList[index];</div><div class="line">        resultObj.entryObj[page.outputPath] = page.entryPath;</div><div class="line">        //除了共用的global，每个页面的js单独配置chunks，其中vendor是entry中的公共模块</div><div class="line">        var chunks = [&apos;vendor&apos;,&apos;global&apos;, page.outputPath];</div><div class="line">        resultObj.pluginArr.push(</div><div class="line">            new HtmlwebpackPlugin(&#123;</div><div class="line">                chunks: chunks,</div><div class="line">                title: &apos;统一的title&apos;,</div><div class="line">                template: &apos;./src/index.html&apos;, //html模板文件</div><div class="line">                filename: page.outputPath + &apos;.html&apos;,</div><div class="line">                chunksSortMode: &apos;dependency&apos;,  //按chunks的顺序对js进行引入</div><div class="line">                hash: true</div><div class="line">            &#125;)</div><div class="line">        );</div><div class="line">    &#125;</div><div class="line">    return resultObj;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li><p>自定义html内容：上面的代码对每个页面都生成一个html，这个html中的内容可以自定义，比如我现在项目里用的是src文件夹下的index.html，只要在这个插件里配置template选项就行；</p>
+</li>
+<li><p>按序配置chunks：自动生成的html页面引用的js是按照上面设置的chunks顺序引用的，并且设置chunksSortMode为dependency；vendor中是一些公共的引用模块，global.js是全局js，page.outputPath是每个页面的js，依赖的顺序显而易见。</p>
+</li>
+</ul>
+<h2 id="简易mock-server"><a href="#简易mock-server" class="headerlink" title="简易mock server"></a>简易mock server</h2><p>前端模拟向后端发送请求，接收后端的json格式的数据</p>
+<h3 id="详解mock-server-js"><a href="#详解mock-server-js" class="headerlink" title="详解mock-server.js"></a>详解mock-server.js</h3><p>利用express搭的服务器环境，附express学习文档：<a href="http://www.expressjs.com.cn/" target="_blank" rel="external">http://www.expressjs.com.cn/</a></p>
+<p>mock的内容下一章再说哈哈~~先偷个小懒，感兴趣的可以去我github看看</p>
+<h2 id="写在最后"><a href="#写在最后" class="headerlink" title="写在最后"></a>写在最后</h2><p>鸡汤啥的就不多说啦，第一次分享文章，多多包涵哈~我认为学习的关键还是多动手，毕竟实践出真知，可以照着我的demo自己实现一遍，出现错误到stackoverflow上查查问题解决方案，自己的知识盲点就到google或者百度上搜索一下，相信肯定能解决你的问题，总之，鸡年大家一起努力！</p>
+
+        </div>
+        <footer class="article-footer">
+            
+
+    <div class="bdsharebuttonbox">
+    <a href="#" class="bds_more" data-cmd="more">分享到：</a>
+    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间">QQ空间</a>
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博">新浪微博</a>
+    <a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博">腾讯微博</a>
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信">微信</a>
+</div>
+<script>
+window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"16"},"share":{"bdSize":16}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+<style>
+    .bdshare_popup_box {
+        border-radius: 4px;
+        border: #e1e1e1 solid 1px;
+    }
+    .bdshare-button-style0-16 a,
+    .bdshare-button-style0-16 .bds_more {
+        padding-left: 20px;
+        margin: 6px 10px 6px 0;
+    }
+    .bdshare_dialog_list a,
+    .bdshare_popup_list a,
+    .bdshare_popup_bottom a {
+        font-family: 'Microsoft Yahei';
+    }
+    .bdshare_popup_top {
+        display: none;
+    }
+    .bdshare_popup_bottom {
+        height: auto;
+        padding: 5px;
+    }
+</style>
+
+
+
+        </footer>
+    </div>
+</article>
+
+    <section id="comments">
+    
+        
+    <div class="ds-thread" data-thread-key="2017/01/29/搭建vue-webpack-mock脚手架（一）/" data-title="搭建vue+webpack+mock脚手架（一）" data-url="http://blog.smallsfe.com/2017/01/29/搭建vue-webpack-mock脚手架（一）/"></div>
+    <style>
+        #ds-thread #ds-reset .ds-textarea-wrapper {
+            background: none;
+        }
+        #ds-reset .ds-avatar img {
+            box-shadow: none;
+        }
+        #ds-reset .ds-gradient-bg {
+            background: #f7f7f7;
+        }
+        #ds-thread #ds-reset li.ds-tab a {
+            border-radius: 3px;
+        }
+        #ds-thread #ds-reset .ds-post-button {
+            color: white;
+            border: none;
+            box-shadow: none;
+            background: #d32;
+            text-shadow: none;
+            font-weight: normal;
+            font-family: 'Microsoft Yahei';
+        }
+        #ds-thread #ds-reset .ds-post-button:hover {
+            color: white;
+            background: #DE594C;
+        }
+        #ds-thread #ds-reset .ds-post-button:active {
+            background: #d32;
+        }
+        #ds-smilies-tooltip ul.ds-smilies-tabs li a.ds-current {
+            color: white;
+            background: #d32;
+            box-shadow: none;
+            text-shadow: none;
+            font-weight: normal;
+        }
+    </style>
+
+    
+    </section>
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>关注我 :</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/smallsfe" target="_blank">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="weibo" href="http://weibo.com/smallsfe/profile?rightmod=1&wvr=6&mod=personinfo&is_all=1" target="_blank">
+                        <i class="icon fa fa-weibo"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="qq" href="http://wpa.qq.com/msgrd?v=3&uin=1926213114&site=qq&menu=yes" target="_blank">
+                        <i class="icon fa fa-qq"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="envelope" href="mailto:sfegsq@qq.com" target="_blank">
+                        <i class="icon fa fa-envelope"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="wechat" href="/css/images/qrcode.jpg" target="_blank">
+                        <i class="icon fa fa-wechat"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2017/02/06/萌新前端的流水账成长经历/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">下一篇</strong>
+        <p class="article-nav-title">
+        
+            萌新前端的流水账成长经历
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
+    
+        <a href="/2017/01/28/萌新的前端之旅/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">上一篇</strong>
+        <p class="article-nav-title">萌新的前端之旅</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">团队简介</h3>
+        <div class="widget">
+            <p>
+            SEF是Small Front End的缩写。
+            <br>
+            Small表示我们一群新人的面貌。
+            <br>
+            我们是一群想搞事情的前端新人。
+            </p>
+        </div>
+    </div>
+
+            
+                    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">二维码</h3>
+        <div class="widget">
+            <img class="qrcode" src="/css/images/qrcode.jpg" width="130" alt="关注我们的微信公众号">
+            <img class="qrcode-group" src="/css/images/group.jpeg" width="130" height="130" alt="关注加入我们的微信群">
+        </div>
+    </div>
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">最新文章</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/02/06/萌新前端的流水账成长经历/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/assets/images/2016summary/yifei.jpeg)" alt="萌新前端的流水账成长经历" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/逸飞/">逸飞</a></p>
+                            <p class="item-title"><a href="/2017/02/06/萌新前端的流水账成长经历/" class="title">萌新前端的流水账成长经历</a></p>
+                            <p class="item-date"><time datetime="2017-02-06T14:57:59.000Z" itemprop="datePublished">2017-02-06</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/01/29/搭建vue-webpack-mock脚手架（一）/" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://wilsonliu.cn/cdn/img/201701/ab81b5f36ca59e7f38fa0c3816c146a6.jpeg)" alt="搭建vue+webpack+mock脚手架（一）" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/小草/">小草</a></p>
+                            <p class="item-title"><a href="/2017/01/29/搭建vue-webpack-mock脚手架（一）/" class="title">搭建vue+webpack+mock脚手架（一）</a></p>
+                            <p class="item-date"><time datetime="2017-01-29T14:32:30.000Z" itemprop="datePublished">2017-01-29</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/01/28/萌新的前端之旅/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/assets/images/2016summary/xiaoyang.jpeg)" alt="萌新的前端之旅" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/小羊/">小羊</a></p>
+                            <p class="item-title"><a href="/2017/01/28/萌新的前端之旅/" class="title">萌新的前端之旅</a></p>
+                            <p class="item-date"><time datetime="2017-01-28T05:00:00.000Z" itemprop="datePublished">2017-01-28</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/01/23/我眼中的Electron/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/assets/images/2016summary/dark.png)" alt="我眼中的Electron" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/DarkZone/">DarkZone</a></p>
+                            <p class="item-title"><a href="/2017/01/23/我眼中的Electron/" class="title">我眼中的Electron</a></p>
+                            <p class="item-date"><time datetime="2017-01-23T13:50:49.000Z" itemprop="datePublished">2017-01-23</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/01/22/聊聊这一年从技术麻瓜开始的奋斗史/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/assets/images/2016summary/wilson.jpg)" alt="聊聊这一年从技术麻瓜开始的奋斗史" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/WilsonLiu/">WilsonLiu</a></p>
+                            <p class="item-title"><a href="/2017/01/22/聊聊这一年从技术麻瓜开始的奋斗史/" class="title">聊聊这一年从技术麻瓜开始的奋斗史</a></p>
+                            <p class="item-date"><time datetime="2017-01-22T15:11:49.000Z" itemprop="datePublished">2017-01-22</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">分类</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/DarkZone/">DarkZone</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/WilsonLiu/">WilsonLiu</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/小羊/">小羊</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/小草/">小草</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/灵儿/">灵儿</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/逸飞/">逸飞</a><span class="category-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">归档</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">5</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">标签</h3>
+        <div class="widget">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/2016总结/">2016总结</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Electron/">Electron</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/">vue</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">标签云</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/2016总结/" style="font-size: 20px;">2016总结</a> <a href="/tags/Electron/" style="font-size: 10px;">Electron</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">友链</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="http://blog.wilsonliu.cn">WilsonLiu博客</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p style="float:left">&copy; 2017 小前端</p>
+                <p style="float:right">小前端，搞事情</p>
+            </div>
+        </div>
+    </div>
+</footer>
+        
+    
+    <script type="text/javascript">
+    var duoshuoQuery = {short_name:'sfe'};
+    (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+    </script>
+
+
+
+
+    
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>
