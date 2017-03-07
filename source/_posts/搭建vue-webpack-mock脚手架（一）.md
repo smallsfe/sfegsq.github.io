@@ -5,8 +5,8 @@ tags:
   - 2016总结
 category:
   - 小草
-date: 2017-01-29 22:32:30
-thumbnail:
+thumbnail: /assets/images/2016summary/xiaocao.jpeg
+date: 2017-02-07 12:32:30
 ---
 
 
@@ -172,12 +172,14 @@ new Vue({
    
    `entryPath`：index.js的绝对路径，也就是webpack的入口js文件
 
+
 ```
 [
 {"outputPath":"test1","entryPath":"/Users/zhoudan/githubwork/vue2-cli/tpl/test1/index.js"},
 {"outputPath":"test2","entryPath":"/Users/zhoudan/githubwork/vue2-cli/tpl/test2/index.js"}
 ]
 ```
+
 **3. 主要思路：**
 
 1. mkdir 生成tpl文件夹
@@ -189,7 +191,7 @@ new Vue({
 
    如果是index.vue 在目录下创建index.js，并把vue模板(template.js)写入
    
-3. 在tpl文件夹的pageList.json中写入pageList
+3. 在tpl文件夹的pageList.json中写入pageList  
 
 ### webpack.config.js文件详解
 前面一坨引入模块，获取路径的一些暂且略过。如果没有webpack基础的，推荐几篇关于webpack的文章：
@@ -391,6 +393,7 @@ function getHtmlPluginArr() {
     return resultObj;
 }
 ```
+
 * 自定义html内容：上面的代码对每个页面都生成一个html，这个html中的内容可以自定义，比如我现在项目里用的是src文件夹下的index.html，只要在这个插件里配置template选项就行；
 
 * 按序配置chunks：自动生成的html页面引用的js是按照上面设置的chunks顺序引用的，并且设置chunksSortMode为dependency；vendor中是一些公共的引用模块，global.js是全局js，page.outputPath是每个页面的js，依赖的顺序显而易见。
